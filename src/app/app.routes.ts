@@ -17,6 +17,10 @@ export const routes: Routes = [
         component:ContactPageComponent
     },
     {
+        path:'countries',
+        loadChildren:()=>import('./countries/countries-routing.module').then(m=>m.CountriesRoutingModule)
+    },
+    {
         path:'**',
         redirectTo:'home'
     },
