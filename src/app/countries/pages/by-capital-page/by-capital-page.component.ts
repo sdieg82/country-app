@@ -1,5 +1,6 @@
 import { Component, Output } from '@angular/core';
 import { SearchBoxComponent } from "../../../shared/components/search-box/search-box.component";
+import { EventEmitter } from 'node:stream';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -9,9 +10,8 @@ import { SearchBoxComponent } from "../../../shared/components/search-box/search
   styleUrl: './by-capital-page.component.css'
 })
 export class ByCapitalPageComponent {
-    @Output()
     searchByCapital(term:string):void{
-      console.log('Desde ByCapitalPage')
+      console.log('Desde By Capital')
       console.log({term})
     }
 }
