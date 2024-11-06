@@ -5,6 +5,7 @@ import { CountryService } from '../../services/country.service';
 import { Country } from '../../interfaces/Country';
 import { CommonModule } from '@angular/common';
 import { CountryTableComponent } from "../../components/country-table/country-table.component";
+import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
 
 @Component({
   selector: 'app-by-capital-page',
@@ -12,7 +13,8 @@ import { CountryTableComponent } from "../../components/country-table/country-ta
   imports: [
     SearchBoxComponent,
     CommonModule,
-    CountryTableComponent
+    CountryTableComponent,
+    LoadingSpinnerComponent
 ],
   templateUrl: './by-capital-page.component.html',
   styleUrl: './by-capital-page.component.css'
@@ -20,16 +22,18 @@ import { CountryTableComponent } from "../../components/country-table/country-ta
 export class ByCapitalPageComponent {
     
   public countries:Country[]=[]
-
+  public isLoading:boolean=false
   constructor (
     private countryService:CountryService
   ){}
   
   searchByCapital(term:string):void{
+      this.isLoading=true
       this.countryService.searchCapital(term)
       .subscribe(
           countries=>{
             this.countries=countries
+            this.isLoading=false
           }
       )
     }
