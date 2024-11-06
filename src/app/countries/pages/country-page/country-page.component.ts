@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-country-page',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './country-page.component.css'
 })
 export class CountryPageComponent {
-
+  constructor(
+    private activatedRoute:ActivatedRoute
+  ){}
 }

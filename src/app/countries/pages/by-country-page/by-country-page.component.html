@@ -1,1 +1,14 @@
-<p>by-country-page works!</p>
+<h2>Por País</h2>
+<hr />
+
+<app-search-box 
+    placeholder="Buscar por país" 
+    class="mt-2"
+    (onValue)="searchCountry($event)"
+        
+></app-search-box>
+<hr>
+<app-country-table 
+    class="mt-2" 
+    [countries]="countries"
+></app-country-table>
