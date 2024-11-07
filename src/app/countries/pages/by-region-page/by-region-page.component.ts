@@ -5,8 +5,9 @@ import { Country } from '../../interfaces/Country';
 import { CountryService } from '../../services/country.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Region } from '../../interfaces/region.type';
 
-type Region = 'Africa'|'Americas'|'Asia'|'Europe'|'Oceania'
+
 
 
 @Component({
