@@ -4,11 +4,15 @@ import { CountryTableComponent } from "../../components/country-table/country-ta
 import { Country } from '../../interfaces/Country';
 import { CountryService } from '../../services/country.service';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+
+type Region = 'Africa'|'Americas'|'Asia'|'Europe'|'Oceania'
+
 
 @Component({
   selector: 'app-by-region-page',
   standalone: true,
-  imports: [SearchBoxComponent, CountryTableComponent],
+  imports: [SearchBoxComponent, CountryTableComponent,CommonModule],
   templateUrl: './by-region-page.component.html',
   styleUrl: './by-region-page.component.css'
 })
@@ -20,17 +24,17 @@ export class ByRegionPageComponent {
   
   @Input()
   public countries:Country[]=[] 
+  public regions:Region[]=['Africa','Americas','Asia','Europe','Oceania']
+  public selectedRegion?:Region;
 
-  searchRegion(term:string):void {
+  searchRegion(term:Region):void {
+    this.selectedRegion=term
+    
     this.serviceRegion.searchRegion(term)
     .subscribe(
       region=>{this.countries=region}
+      
     )
-
+    
   }
-
-
-
-
-
 }

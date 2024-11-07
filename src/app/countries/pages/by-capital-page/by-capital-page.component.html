@@ -1,7 +1,12 @@
 <h2>Por Capital</h2>
 <hr>
 <div class="row">
-    <app-search-box (onValue)="searchByCapital($event)"  placeholder="Buscar por capital"></app-search-box>
+    
+    
+    <!-- (onValue)="searchByCapital($event)"   -->
+    <app-search-box
+    (onDebounce)="searchByCapital($event)" 
+    placeholder="Buscar por capital"></app-search-box>
 </div>
 <div class="row">.
     <div class="col">
