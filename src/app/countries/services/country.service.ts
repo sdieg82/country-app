@@ -22,7 +22,12 @@ export class CountryService {
   searchCapital(term: string): Observable<Country[]> {
     return this.http
       .get<Country[]>(`${this.apiUrl}/capital/${term}`)
-      .pipe(catchError(() => of([])));
+      .pipe(
+        tap(
+          countries=>this.cacheStore.byCapital={term,countries}
+
+        )
+      );
   }
   searchCountry(term: string): Observable<Country[]> {
     return this.http
