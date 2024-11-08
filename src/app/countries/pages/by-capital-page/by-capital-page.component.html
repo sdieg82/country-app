@@ -6,13 +6,14 @@
     <!-- (onValue)="searchByCapital($event)"   -->
     <app-search-box
     (onDebounce)="searchByCapital($event)" 
-    placeholder="Buscar por capital"></app-search-box>
+    placeholder="Buscar por capital"
+    [initialValue]="initialValue"
+    ></app-search-box>
 </div>
 <div class="row">.
     <div class="col">
         <hr>
-            <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+           <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
            <app-country-table [countries]="countries"></app-country-table>
-        
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchBoxComponent } from "../../../shared/components/search-box/search-box.component";
 import { CountryTableComponent } from "../../components/country-table/country-table.component";
 import { Country } from '../../interfaces/Country';
@@ -7,9 +7,6 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Region } from '../../interfaces/region.type';
 
-
-
-
 @Component({
   selector: 'app-by-region-page',
   standalone: true,
@@ -17,16 +14,18 @@ import { Region } from '../../interfaces/region.type';
   templateUrl: './by-region-page.component.html',
   styleUrl: './by-region-page.component.css'
 })
-export class ByRegionPageComponent {
+export class ByRegionPageComponent implements OnInit {
 
   constructor(
     private serviceRegion:CountryService
   ){}
   
+  
   @Input()
   public countries:Country[]=[] 
   public regions:Region[]=['Africa','Americas','Asia','Europe','Oceania']
   public selectedRegion?:Region;
+  public initialValue:string=''
 
   searchRegion(term:Region):void {
     this.selectedRegion=term
@@ -37,5 +36,11 @@ export class ByRegionPageComponent {
       
     )
     
+  }
+
+  ngOnInit(): void {
+    this.countries=this.serviceRegion.cacheStore.byRegion.countries
+    this.selectedRegion=this.serviceRegion.cacheStore.byRegion.region
+   
   }
 }
